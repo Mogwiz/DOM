@@ -4,12 +4,13 @@
 }
 
 body {
-    background-color: rgb(45, 68, 128);
+    background: rgb(253,241,184);
+    background: linear-gradient(90deg, rgba(253,241,184,1) 0%, rgba(255,255,255,1) 40%, rgba(255,255,255,1) 60%, rgba(253,241,184,1) 100%);        
     font-family: "Noto Sans Symbols", sans-serif;
 }
 
 #card {
-    background-color: white;
+    background-color: #fefcf6;
     width: 288px;
     height: 503px;
     border-radius: 27px;
@@ -24,8 +25,8 @@ button {
     position: absolute;
     bottom: -5%;
     left: 25%;
-    background-color: rgba(255, 188, 15, 1);
-    color: rgba(45, 68, 128, 1);
+    background-color: rgb(253,241,184);
+    color: black;
     border-radius: 27px;
     border: none;
     font-weight: 600;
@@ -33,6 +34,13 @@ button {
     letter-spacing: 1px;
     text-transform: uppercase;
     text-decoration: none;
+    transition: color 1s ease;
+    transition: background-color 1s ease;
+}
+
+button:hover {
+    background-color: black;
+    color:  rgb(253,241,184);
 }
 
 h1 {
