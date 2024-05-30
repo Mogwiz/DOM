@@ -2,18 +2,14 @@ const buttonOne = document.querySelector("#playerOne");
 const buttonTwo = document.querySelector("#playerTwo");
 const resetName = document.querySelector("#resetName");
 const resetButton = document.querySelector("#reset");
-const scoreOne = document.querySelector("#first");
-const scoreTwo = document.querySelector("#second");
 let score = buttonOne.parentElement.previousElementSibling;
 let countOne = 0;
 let countTwo = 0;
-const a = 1;
+let scoreOne = document.querySelector("#first");
+let scoreTwo = document.querySelector("#second");
 
-/* let playerOne = prompt(`What is the name of the first player ?`);
+let playerOne = prompt(`What is the name of the first player ?`);
 let playerTwo = prompt(`What is the name of the second player ?`);
-
-buttonOne.innerText = playerOne + " +1";
-buttonTwo.innerText = playerTwo + " +1";
 
 if(playerOne === null){
     playerOne = "Player 1";
@@ -22,6 +18,9 @@ if(playerOne === null){
 if(playerTwo === null){
     playerTwo = "Player 2";
 }
+
+buttonOne.textContent = playerOne + " +1";
+buttonTwo.textContent = playerTwo + " +1";
 
 resetName.addEventListener("click", () => {
     playerOne = prompt(`What is the name of the first player ?`);
@@ -33,27 +32,55 @@ resetName.addEventListener("click", () => {
     if(playerTwo === null){
         playerTwo = "Player 2";
     }
-    buttonOne.innerText = playerOne + " +1";
-    buttonTwo.innerText = playerTwo + " +1";
-}); */
+    buttonOne.textContent = playerOne + " +1";
+    buttonTwo.textContent = playerTwo + " +1";
+});
 
-score.innerHTML = `<span id="first">${countOne}</span> to <span id="second">${countTwo}</span>`;
+scoreOne.textContent = countOne;
+scoreTwo.textContent = countTwo;
 
 resetButton.addEventListener("click", (e) => {
     e.stopPropagation;
     countOne = 0;
     countTwo = 0;
-    score.innerHTML = `<span id="first">${countOne}</span> to <span id="second">${countTwo}</span>`;
+    scoreOne.textContent = countOne;
+    scoreTwo.textContent = countTwo;
+    scoreOne.style.color = "black";
+    scoreTwo.style.color = "black";
+    buttonOne.style.display = "inline-block";
+    buttonTwo.style.display = "inline-block";
 });
 
 buttonOne.addEventListener("click", (e) => {
     e.stopPropagation;
     countOne++;
-    score.innerHTML = `<span id="first">${countOne}</span> to <span id="second">${countTwo}</span>`;
+    scoreOne.textContent = countOne;
+    if(countOne + countTwo === 5){
+        buttonOne.style.display = "none";
+        buttonTwo.style.display = "none";
+    if(countOne > countTwo){
+        scoreOne.style.color = "green";
+        scoreTwo.style.color = "red";
+    } else if (countOne < countTwo){
+        scoreOne.style.color = "red";
+        scoreTwo.style.color = "green";
+    }
+}
 });
 
 buttonTwo.addEventListener("click", (e) => {
     e.stopPropagation;
     countTwo++;
-    score.innerHTML = `<span id="first">${countOne}</span> to <span id="second">${countTwo}</span>`;
+    scoreTwo.textContent = countTwo;
+    if(countOne + countTwo === 5){
+        buttonOne.style.display = "none";
+        buttonTwo.style.display = "none";
+        if(countOne > countTwo){
+            scoreOne.style.color = "green";
+            scoreTwo.style.color = "red";
+        } else if (countOne < countTwo){
+            scoreOne.style.color = "red";
+            scoreTwo.style.color = "green";
+        }
+    }
 });
