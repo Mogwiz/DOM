@@ -9,5 +9,3 @@ button.addEventListener("click", () => {
     body.style.backgroundColor = `rgb(${randomOne}, ${randomTwo}, ${randomThree})`;
     title.innerHTML = `RGB (${randomOne}, ${randomTwo}, ${randomThree})`;
 });
-
-
