@@ -10,11 +10,11 @@ const confirmPasswordError = confirmPassword.nextElementSibling;
 
 form.addEventListener("submit", (e) =>{
         e.preventDefault();
-    if (username.value === "" || username.value === null || username.value.length < 5 || username.value.length > 10){
+    if (username.value === "" || username.value === null || username.value.length < 5 || username.value.length > 10 || !username.value.match(/^[a-z]+$/)){
         usernameError.style.display = "block";
         username.style.color = "red";
     }
-    if (username.value.length > 5 && username.value.length < 10){
+    if (username.value.length > 5 && username.value.length < 10 || username.value.match(/^[a-z]+$/)){
         usernameError.style.display = "none";
         username.style.color = "green";
     }
