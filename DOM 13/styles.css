@@ -14,7 +14,7 @@ body {
     width: 288px;
     border-radius: 27px;
     margin-top: 150px;
-    box-shadow: 5px 20px 50px 0px rgba(0, 0, 0, 0.6);
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.6);
     padding: 35px 50px 50px 50px;
     position: relative;
 }
