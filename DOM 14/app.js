@@ -13,7 +13,7 @@ const arrBoard = board.children;
     for(const element of arrBoard){
         element.classList.add("cell");
     }
-const grids = document.querySelectorAll(".cell");
+const cell = document.querySelectorAll(".cell");
 
     const winCombinations = [
         [0, 1, 2],
@@ -28,6 +28,7 @@ const grids = document.querySelectorAll(".cell");
 
     let arr = ["O", "X", "O", "X", "O", "X", "O", "X", "O", "X"];
     let clickCount = 0;
+    let turnCount = arr[clickCount];
     const x = document.getElementById("x");
     const o = document.getElementById("o");
     const begin = document.getElementById("begin")
@@ -42,8 +43,9 @@ const grids = document.querySelectorAll(".cell");
     o.addEventListener("click", () =>{
         begin.style.display = "none";
         turn.style.display = "block";
+        let clickCount = 0;
         if (clickCount === 0 || clickCount === 2 || clickCount === 4 || clickCount === 6|| clickCount === 8){
-            turn.innerText = `Player O's turn`;
+            turn.innerText = `Player ${turnCount}'s turn`;
         }
     })
 
@@ -51,8 +53,9 @@ const grids = document.querySelectorAll(".cell");
         begin.style.display = "none";
         turn.style.display = "block";
         let clickCount = 1;
+        let turnCount = arr[clickCount];
         if (clickCount === 1 || clickCount === 3 || clickCount === 5 || clickCount === 7|| clickCount === 9){
-            turn.innerText = `Player X's turn`;
+            turn.innerText = `Player ${turnCount}'s turn`;
         }
     })
 
