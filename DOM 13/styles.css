@@ -12,12 +12,10 @@ body {
 #card {
     background-color: #fefcf6;
     width: 288px;
-    height: 503px;
     border-radius: 27px;
     margin-top: 150px;
-    text-align: center;
     box-shadow: 5px 20px 50px 0px rgba(0, 0, 0, 0.6);
-    padding: 35px 50px;
+    padding: 35px 50px 50px 50px;
     position: relative;
 }
 
@@ -47,4 +45,24 @@ h1 {
     text-align: center;
     text-transform: uppercase;
     font-weight: 300;
+}
+
+#askUsername {
+    margin-top: 15px;
+}
+
+input {
+    border: none;
+    border-bottom: 3px rgb(253,241,184) solid;
+    transition: border 1s ease;
+}
+
+input:hover {
+    border-bottom: 3px black solid;
+}
+
+p{
+    font-size: 12px;
+    display: none;
+    color: red;
 }

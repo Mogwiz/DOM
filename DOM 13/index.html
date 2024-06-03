@@ -11,12 +11,39 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Allan:wght@400;700&family=Noto+Sans+Symbols:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script defer src="app.js"></script>
 </head>
 <body>
 <div id="card">
     <h1>Form</h1>
     <hr>
-    <button>Submit</button>
+    <form method="GET" id="form">
+    <div id="askUsername">
+        <label for="username">Enter your username</label>
+        <br>
+        <input type="text" id="username" placeholder="Username">
+        <p class="msg">Must be only lowercase, at least 5 characters and at most 10 characters.</p>
+    </div>
+    <div id="askEmail">
+        <label for="email">Enter your email</label>
+        <br>
+        <input type="email" id="email" placeholder="Email">
+        <p class="msg">Must be a valid email.</p>
+    </div>
+    <div id="askPassword">
+        <label for="password">Enter your password</label>
+        <br>
+        <input type="password" id="password" placeholder="Password">
+        <p class="msg">Must be at least 8 characters and at most 15 characters.</p>
+    </div>
+    <div id="confirmAskPassword">
+        <label for="confirmPassword">Confirm your password</label>
+        <br>
+        <input type="password" id="confirmPassword" placeholder="Confirm password">
+        <p class="msg">Should be the same password</p>
+        <button id="submit" type="submit">Submit</button>
+    </form>
+    </div>
 </div>
 </body>
 </html>
