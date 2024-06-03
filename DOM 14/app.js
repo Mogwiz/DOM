@@ -13,7 +13,7 @@ const arrBoard = board.children;
     for(const element of arrBoard){
         element.classList.add("cell");
     }
-const cell = document.querySelectorAll(".cell");
+const cells = document.querySelectorAll(".cell");
 
     const winCombinations = [
         [0, 1, 2],
@@ -58,6 +58,15 @@ const cell = document.querySelectorAll(".cell");
             turn.innerText = `Player ${turnCount}'s turn`;
         }
     })
+
+    cells.forEach(cell => {
+        cell.addEventListener("click", handleClick, { once: true})
+    })
+
+    function handleClick(e) {
+        console.log("clicked");
+        
+    }
 
     restart.addEventListener("click", () =>{
         begin.style.display = "block";
