@@ -39,6 +39,7 @@ body {
     grid-template: 150px 150px 150px / 150px 150px 150px;
     border: 5px black solid;
     background-color: rgb(201, 175, 111);
+    display: none;
 }
 
 .cell {

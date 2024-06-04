@@ -4,6 +4,7 @@ const grid = document.createElement("p");
 const restart = document.querySelector("button");
 const turn = document.getElementById("turn");
 let circleTurn = true;
+let gameOver = false;
 
 for (let i = 0; i < 9; i++) {
 const cell = document.createElement("p");
@@ -33,6 +34,7 @@ begin.style.display = "none";
 turn.style.display = "block";
 turn.innerText = `Player O's turn`;
 circleTurn = true;
+board.style.display = "grid";
 });
 
 x.addEventListener("click", () => {
@@ -40,6 +42,7 @@ begin.style.display = "none";
 turn.style.display = "block";
 turn.innerText = `Player X's turn`;
 circleTurn = false;
+board.style.display = "grid";
 });
 
 cells.forEach(cell => {
@@ -56,6 +59,14 @@ circleTurn = !circleTurn;
 const winner = checkWinner(cell.innerText);
 if (winner) {
 displayWinner(winner);
+gameOver = true;
+return;
+}
+
+const isDraw = checkDraw();
+if (isDraw) {
+displayDraw();
+gameOver = true;
 return;
 }
 
@@ -75,16 +86,32 @@ for (const combination of winCombinations) {
 return null;
 }
 
+function checkDraw() {
+    for (let i = 0; i < cells.length; i++) {
+    if (cells[i].innerText === "") {
+        return false;
+    }
+    }
+    return true;
+}
+
 function displayWinner(winner) {
 turn.innerText = `Player ${winner} wins!`;
+cells.forEach(cell => cell.removeEventListener("click", handleClick));
+}
+
+function displayDraw() {
+    turn.innerText = "It's a Draw!";
 }
 
 restart.addEventListener("click", () => {
 begin.style.display = "block";
 turn.style.display = "none";
+gameOver = false;
 cells.forEach(cell => {
     cell.innerText = "";
     cell.removeEventListener("click", handleClick);
     cell.addEventListener("click", handleClick, { once: true });
+    board.style.display = "none";
 });
 });
