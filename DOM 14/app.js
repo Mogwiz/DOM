@@ -11,7 +11,6 @@ cell.classList.add("cell");
 board.appendChild(cell);
 }
 
-const arrBoard = board.children;
 const cells = document.querySelectorAll(".cell");
 
 const winCombinations = [
@@ -24,8 +23,6 @@ const winCombinations = [
 [0, 4, 8],
 [2, 4, 6],
 ];
-
-let clickCount = 0;
 
 const x = document.getElementById("x");
 const o = document.getElementById("o");
@@ -63,8 +60,6 @@ return;
 }
 
 turn.innerText = `Player ${circleTurn ? "O's" : "X's"} turn`;
-
-clickCount++;
 }
 
 function checkWinner(symbol) {
@@ -87,7 +82,6 @@ turn.innerText = `Player ${winner} wins!`;
 restart.addEventListener("click", () => {
 begin.style.display = "block";
 turn.style.display = "none";
-clickCount = 0;
 cells.forEach(cell => {
     cell.innerText = "";
     cell.removeEventListener("click", handleClick);
