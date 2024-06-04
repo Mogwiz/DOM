@@ -3,6 +3,7 @@ const board = document.querySelector("#board");
 const grid = document.createElement("p");
 const restart = document.querySelector("button");
 const turn = document.getElementById("turn");
+let circleTurn;
 
 for (i = 0 ; i < 9 ; i++){
     const grid = document.createElement("p");
@@ -27,36 +28,23 @@ const cells = document.querySelectorAll(".cell");
     ];
 
     let arr = ["O", "X", "O", "X", "O", "X", "O", "X", "O", "X"];
-    let clickCount = 0;
+    let clickCount = 1;
     let turnCount = arr[clickCount];
     const x = document.getElementById("x");
     const o = document.getElementById("o");
-    const begin = document.getElementById("begin")
-
-    if (clickCount === 0 || clickCount === 2 || clickCount === 4 || clickCount === 6|| clickCount === 8){
-        turn.innerText = `Player O's turn`;
-    }
-    if (clickCount === 1 || clickCount === 3 || clickCount === 5 || clickCount === 7|| clickCount === 9){
-        turn.innerText = `Player X's turn`;
-    }    
+    const begin = document.getElementById("begin")  
 
     o.addEventListener("click", () =>{
         begin.style.display = "none";
         turn.style.display = "block";
-        let clickCount = 0;
-        if (clickCount === 0 || clickCount === 2 || clickCount === 4 || clickCount === 6|| clickCount === 8){
-            turn.innerText = `Player ${turnCount}'s turn`;
-        }
+        turn.innerText = `Player O's turn`;
     })
 
     x.addEventListener("click", () =>{
         begin.style.display = "none";
         turn.style.display = "block";
-        let clickCount = 1;
-        let turnCount = arr[clickCount];
-        if (clickCount === 1 || clickCount === 3 || clickCount === 5 || clickCount === 7|| clickCount === 9){
-            turn.innerText = `Player ${turnCount}'s turn`;
-        }
+        turn.innerText = `Player X's turn`;
+        clickCount++;
     })
 
     cells.forEach(cell => {
@@ -64,13 +52,42 @@ const cells = document.querySelectorAll(".cell");
     })
 
     function handleClick(e) {
-        console.log("clicked");
-        
+        const cell = e.target;
+        let turnCount = arr[clickCount];
+        cell.innerText = `${arr[clickCount - 1]}`;
+        if (clickCount === 1 || clickCount === 3 || clickCount === 5 || clickCount === 7|| clickCount === 9){
+            turn.innerText = `Player ${arr[clickCount]}'s turn`;
+        }
+        if (clickCount === 2 || clickCount === 4 || clickCount === 6 || clickCount === 8|| clickCount === 10){
+            turn.innerText = `Player ${arr[clickCount]}'s turn`;
+        }
+        if (clickCount === 1 || clickCount === 3 || clickCount === 5 || clickCount === 7|| clickCount === 9){
+            cell.classList.add("o_class");
+        }
+        if (clickCount === 2 || clickCount === 4 || clickCount === 6 || clickCount === 8|| clickCount === 10){
+            cell.classList.add("x_class");
+        }
+        clickCount++;
+        /*if(checkWin(currentClass)) {
+            console.log("winner");
+        }*/
     }
+
+    /*function checkWin(currentClass) {
+        return winCombinations.some(combination => {
+            return combination.every(index => {
+                return cells[index].classList.contains(currentClass);
+            })
+        })
+    }*/
 
     restart.addEventListener("click", () =>{
         begin.style.display = "block";
         turn.style.display = "none";
+        clickCount = 1;
+        cells.forEach(cell => {
+            cell.innerText = "";
+        })
     })
 
 
