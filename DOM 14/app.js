@@ -35,6 +35,7 @@ turn.style.display = "block";
 turn.innerText = `Player O's turn`;
 circleTurn = true;
 board.style.display = "grid";
+restart.style.display = "block";
 });
 
 x.addEventListener("click", () => {
@@ -43,6 +44,7 @@ turn.style.display = "block";
 turn.innerText = `Player X's turn`;
 circleTurn = false;
 board.style.display = "grid";
+restart.style.display = "block";
 });
 
 cells.forEach(cell => {
@@ -113,5 +115,6 @@ cells.forEach(cell => {
     cell.removeEventListener("click", handleClick);
     cell.addEventListener("click", handleClick, { once: true });
     board.style.display = "none";
+    restart.style.display = "none";
 });
 });

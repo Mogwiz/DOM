@@ -25,6 +25,7 @@ body {
     border-radius: 50px;
     transition: color 1s ease;
     transition: font-size 1s ease;
+    display: none;
 }
 
 #restart:hover {
